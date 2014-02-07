@@ -48,7 +48,7 @@ for line in df:
                     caso.edad_reco = Caso.EDAD_CHOICES[2]
                 elif item == '45 - 54':
                     caso.edad_reco = Caso.EDAD_CHOICES[3]
-                elif item == '55 y más':
+                elif item == '55  y más':
                     caso.edad_reco = Caso.EDAD_CHOICES[4]
                     
             elif i == 11:

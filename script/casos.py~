@@ -73,8 +73,8 @@ for line in df:
                     caso.idioma = Caso.IDIOMA_CHOICES[0]
                 caso.save()
             if i >= 14:
-                clave_pregunta = index[i]
-                print 'Pregunta: %s.' % clave_pregunta
+                clave_pregunta = index[i].replace('\n', '')
+                #print 'Pregunta: %s.' % clave_pregunta
                 pregunta = Pregunta.objects.get(clave=clave_pregunta)
                 respuesta = Respuesta(caso=caso, pregunta=pregunta, respuesta=item)
                 respuesta.save()
