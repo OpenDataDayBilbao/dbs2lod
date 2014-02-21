@@ -1,0 +1,29 @@
+<html>
+<head>
+<script type='text/javascript' src='https://www.google.com/jsapi'></script>
+<script type='text/javascript'>
+    google.load('visualization', '1', {'packages': ['geochart']});
+    google.setOnLoadCallback(drawRegionsMap);
+
+    function drawRegionsMap() {
+	var data = new google.visualization.DataTable();
+	data.addColumn('string', 'Country');
+	data.addColumn('number', 'Popularity');
+	//data.addRows([ [{f: 'Pais Vasco', v: 'ES-PV'}, 1], [{f: 'Valencia', v: 'ES-VC'}, 2] ]);
+	data.addRows([ [{f: 'Bizkaia', v: 'ES-BI'}, 1], [{f: 'Vitoria', v: 'ES-VI'}, 2] ]);
+
+	var options = {'title':'Spain',
+	'width':650, 'height':400, 'region':'ES', 'resolution':'provinces'};
+
+	var container = document.getElementById('map_canvas');
+	var geochart = new google.visualization.GeoChart(container);
+	geochart.draw(data, options);
+    };
+</script>
+</head>
+
+<body>
+<div id='map_canvas'></div>
+</body>
+
+</html>
