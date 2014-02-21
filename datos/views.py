@@ -23,13 +23,11 @@ def preguntas(request, id):
 
 	for caso in casos:
 		provincia = caso.provincia.encode('utf-8')
-		print(provincia)
-
-		
+		#print(provincia)
 		
 		respuesta = caso.respuesta_set.filter(pregunta=pregunta)
 		for r in respuesta:
-			print(r.respuesta)
+			#print(r.respuesta)
 			if r.respuesta == '1':
 				diccionarioSi[provincia] += 1
 			if r.respuesta == '0':
@@ -37,6 +35,28 @@ def preguntas(request, id):
 			
 	print(diccionarioSi)
 	print(diccionarioNo)
+
+	totalVizcaya = diccionarioSi['Vizcaya'] + diccionarioNo['Vizcaya']
+	totalGuipuzcoa = diccionarioSi['Guipúzcoa'] + diccionarioNo['Guipúzcoa']
+	totalAlava = diccionarioSi['Álava'] + diccionarioNo['Álava']
+
+	#print(totalVizcaya)
+
+	porcentajeSiVizcaya = float(diccionarioSi['Vizcaya']) / totalVizcaya * 100
+	porcentajeSiGuipuzcoa = float(diccionarioSi['Guipúzcoa']) / totalGuipuzcoa * 100
+	porcentajeSiAlava = float(diccionarioSi['Álava']) / totalAlava * 100
+	
+	print('%s Vizcaya' % str(porcentajeSiVizcaya))
+	print('%s Guipúzcoa' % str(porcentajeSiGuipuzcoa))
+	print('%s Álava' % str(porcentajeSiAlava))
+
+	colorVizcaya = porcentajeSiVizcaya * 255 / 100
+	colorGuipuzcoa = porcentajeSiGuipuzcoa * 255 / 100	
+	colorAlava = porcentajeSiAlava * 255 / 100
+
+	print('%s ColorV' % str(colorVizcaya))
+	print('%s ColorG' % str(colorGuipuzcoa))
+	print('%s ColorA' % str(colorAlava))
 
 	return HttpResponse("Mira la consola!")
 
