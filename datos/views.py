@@ -23,11 +23,11 @@ def preguntas(request, id):
 
 	for caso in casos:
 		provincia = caso.provincia.encode('utf-8')
-		print(provincia)
+		#print(provincia)
 		
 		respuesta = caso.respuesta_set.filter(pregunta=pregunta)
 		for r in respuesta:
-			print(r.respuesta)
+			#print(r.respuesta)
 			if r.respuesta == '1':
 				diccionarioSi[provincia] += 1
 			if r.respuesta == '0':
